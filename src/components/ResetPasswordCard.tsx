@@ -29,10 +29,11 @@ function ResetPasswordCard() {
               Digite a nova senha
             </label>
             <input
+              id="password"
+              name="password"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              id="password"
               placeholder="Digite a nova senha"
               className="w-full px-4 py-2 pr-10 border-2 border-gray-700 rounded-full focus:outline-none"
             />
@@ -50,10 +51,10 @@ function ResetPasswordCard() {
               Repita a senha
             </label>
             <input
+              id="confirmPassword"
               type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              id="confirmPassword"
               placeholder="Repita sua senha"
               className="w-full px-4 py-2 pr-10 border-2 border-gray-700 rounded-full focus:outline-none"
             />
