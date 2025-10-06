@@ -1,4 +1,5 @@
 import mainImage from "../assets/img_principal_solidarity.png";
+import { Link } from "react-router-dom";
 
 function HeroSection() {
     return (
@@ -23,14 +24,14 @@ function HeroSection() {
           </p>
 
           <div className="flex">
-            <button>
-              <a
-                href="#"
-                className="border-3 border-black bg-blue-400 text-white px-10 py-3 rounded-xl shadow-[6px_6px_0px_rgba(0,0,0,1)]"
-              >
+            <Link
+              to={"/volunteer/register"}
+              className="border-3 border-black bg-blue-400 text-white px-10 py-3 rounded-xl shadow-[6px_6px_0px_rgba(0,0,0,1)]"
+            >
+              <button>
                 <b>Quero ser voluntário</b>
-              </a>
-            </button>
+              </button>
+            </Link>
 
             <button>
               <a

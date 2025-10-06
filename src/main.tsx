@@ -8,7 +8,7 @@ import Login from './routes/Login.tsx'
 import ForgotPassword from './routes/ForgotPassword.tsx'
 import VerifyCode from './routes/VerifyCode.tsx'
 import ResetPassword from './routes/ResetPassword.tsx'
-import VolunteerRegisterStep3 from './routes/volunteer/steps/VolunteerRegisterStep3.tsx'
+import VolunteerRegisterPage from './pages/VolunteerRegisterPage.tsx'
 
 const router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/volunteer/register",
-    element: <VolunteerRegisterStep3/>
+    element: <VolunteerRegisterPage/>
   }
 ])
 
