@@ -1,4 +1,3 @@
-import Button from "@/components/Button";
 import FormContainer from "@/components/FormContainer";
 
 export default function VolunteerRegisterStep1() {
@@ -101,14 +100,6 @@ export default function VolunteerRegisterStep1() {
           </div>
         </form>
       </FormContainer>
-      <div className="flex justify-center gap-4 mt-6">
-        <Button variant="secondary" className="w-[200px]">
-          Voltar
-        </Button>
-        <Button variant="primary" className="w-[200px]">
-          Avançar
-        </Button>
-      </div>
     </div>
   );
 }

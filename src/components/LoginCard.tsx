@@ -11,7 +11,7 @@ function LoginCard() {
 
   return (
     <div className="flex justify-center items-center min-h-screen">
-      <div className="border-3 shadow-[10px_10px_0px_rgba(156,163,175,1)] rounded-2xl p-8 w-full max-w-md">
+      <div className="border-2 shadow-[10px_10px_0px_rgba(156,163,175,1)] rounded-2xl p-8 w-full max-w-md">
         <h2 className="text-6xl text-center font-bold text-blue-400">Login</h2>
 
         <form method="Post" className="space-y-4">
