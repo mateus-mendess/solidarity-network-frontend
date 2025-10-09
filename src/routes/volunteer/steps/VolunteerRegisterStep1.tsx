@@ -1,6 +1,12 @@
 import FormContainer from "@/components/FormContainer";
+import { type volunteer } from "@/types/volunteer";
 
-export default function VolunteerRegisterStep1() {
+interface Step1Props {
+  formData: volunteer;
+  updateFormData: (data: Partial<volunteer>) => void;
+}
+
+export default function VolunteerRegisterStep1({formData, updateFormData}: Step1Props) {
   return (
     <div className="flex flex-col items-center justify-center w-full py-10">
       <FormContainer>
@@ -14,6 +20,8 @@ export default function VolunteerRegisterStep1() {
               name="cpf"
               type="text"
               placeholder="000.000.000-00"
+              value={formData.cpf}
+              onChange={(e) => updateFormData({cpf: e.target.value})}
               className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
@@ -29,6 +37,8 @@ export default function VolunteerRegisterStep1() {
               id="firstName"
               name="firstName"
               type="text"
+              value={formData.name}
+              onChange={(e) => updateFormData({name: e.target.value})}
               className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
@@ -44,6 +54,8 @@ export default function VolunteerRegisterStep1() {
               id="lastName"
               name="lastName"
               type="text"
+              value={formData.lastName}
+              onChange={(e) => updateFormData({lastName: e.target.value})}
               className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
@@ -56,9 +68,11 @@ export default function VolunteerRegisterStep1() {
               Data de nascimento
             </label>
             <input
-              id="birthDate"
-              name="birthDate"
+              id="birthday"
+              name="birthday"
               type="date"
+              value={formData.birthday}
+              onChange={(e) => updateFormData({birthday: e.target.value})}
               placeholder="dd/mm/aaaa"
               className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
@@ -74,6 +88,8 @@ export default function VolunteerRegisterStep1() {
             <select
               name="gender"
               id="gender"
+              value={formData.gender}
+              onChange={(e) => updateFormData({gender: e.target.value})}
               className="border border-gray-300 rounded-full px-4 py-2 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="">Selecione...</option>
@@ -95,6 +111,8 @@ export default function VolunteerRegisterStep1() {
               name="phone"
               type="text"
               placeholder="(00) 00000-0000"
+              value={formData.phone}
+              onChange={(e) => updateFormData({phone: e.target.value})}
               className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>

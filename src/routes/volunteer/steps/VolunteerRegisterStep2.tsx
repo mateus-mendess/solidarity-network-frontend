@@ -1,6 +1,12 @@
 import FormContainer from "@/components/FormContainer";
+import type { volunteer } from "@/types/volunteer";
 
-export default function VolunteerRegisterStep2() {
+interface Step2Props {
+  formData: volunteer;
+  updateFormData: (data: Partial<volunteer>) => void;
+}
+
+export default function VolunteerRegisterStep2({formData, updateFormData}: Step2Props) {
   return (
     <div className="flex flex-col items-center justify-center w-full py-10">
       <FormContainer>
@@ -13,6 +19,8 @@ export default function VolunteerRegisterStep2() {
             id="work"
             name="work"
             type="text"
+            value={formData.work}
+            onChange={(e) => updateFormData({work: e.target.value})}
             className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
 
@@ -84,6 +92,7 @@ export default function VolunteerRegisterStep2() {
             id="profilePhoto"
             name="profilePhoto"
             type="file"
+            onChange={(e) => updateFormData({profilePhoto: e.target.files?.[0] || null})}
             accept="image/*"
             className="block w-full text-sm text-gray-700 border pr-5 border-gray-300 rounded-full cursor-pointer focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-gray-200 hover:file:bg-gray-300"
           />

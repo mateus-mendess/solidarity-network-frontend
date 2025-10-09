@@ -1,10 +1,14 @@
 import FormContainer from "@/components/FormContainer";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import type { volunteer } from "@/types/volunteer";
 
-export default function VolunteerRegisterStep3() {
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+interface Step3Props {
+  formData: volunteer;
+  updateFormData: (data: Partial<volunteer>) => void;
+}
+
+export default function VolunteerRegisterStep3({formData, updateFormData}: Step3Props) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -22,6 +26,8 @@ export default function VolunteerRegisterStep3() {
                 id="email"
                 name="email"
                 type="email"
+                value={formData.email}
+                onChange={(e) => updateFormData({email: e.target.value})}
                 placeholder="exemplo@email.com"
                 className="border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
@@ -35,8 +41,8 @@ export default function VolunteerRegisterStep3() {
                 id="password"
                 name="password"
                 type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={(e) => updateFormData({password: e.target.value})}
                 className="border border-gray-300 rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
@@ -59,8 +65,8 @@ export default function VolunteerRegisterStep3() {
                 id="confirmPassword"
                 name="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={formData.confirmPassword}
+                onChange={(e) => updateFormData({confirmPassword: e.target.value})}
                 className="border border-gray-300 rounded-full px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
