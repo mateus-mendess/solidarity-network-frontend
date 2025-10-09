@@ -44,10 +44,12 @@ export default function VolunteerRegisterWizard() {
           }
         }
       });
-
-      await api.post("/volunteer", formDataToSend, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      
+      for (const [key, value] of formDataToSend.entries()) {
+        console.log(`${key}:`, value);
+      }
+      
+      await api.post("/volunteer/register", formDataToSend)
 
       alert("cadastro realizado com sucesso!")
       navigate("/login")

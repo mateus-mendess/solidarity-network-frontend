@@ -91,6 +91,8 @@ export default function VolunteerRegisterStep3({formData, updateFormData}: Step3
             <label className="flex items-center gap-2 mt-2">
               <input
                 type="checkbox"
+                checked={formData.authorized}
+                onChange={(e) => updateFormData({authorized: e.target.checked})}
                 className="w-4 h-4 accent-blue-500 border-gray-400"
                 required
               />
