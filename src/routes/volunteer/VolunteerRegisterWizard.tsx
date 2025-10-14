@@ -6,7 +6,7 @@ import VolunteerRegisterStep1 from "./steps/VolunteerRegisterStep1";
 import VolunteerRegisterStep2 from "./steps/VolunteerRegisterStep2";
 import VolunteerRegisterStep3 from "./steps/VolunteerRegisterStep3";
 import { type volunteer } from "@/types/volunteer";
-import api from "@/service/api";
+import api from "@/api/api";
 
 export default function VolunteerRegisterWizard() {
   const [step, setStep] = useState(1);

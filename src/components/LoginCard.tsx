@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { login } from "@/service/authenticationService";
+import { login } from "@/services/authenticationService";
 import AccountTypeSelectorCard from "./AccountTypeSelectorCard";
 import Modal from "../components/Modal";
 

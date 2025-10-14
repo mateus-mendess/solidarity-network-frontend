@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: "primary" | "secondary";
+    variant?: "primary" | "secondary" | "delete";
     children: React.ReactNode;
 }
 
@@ -16,7 +16,8 @@ export default function Button({
     
     const variants = {
         primary: "bg-blue-400 text-white",
-        secondary: "bg-white text-blue-400"
+        secondary: "bg-white text-blue-400",
+        delete: "bg-red-600 text-white"
     };
 
     return (
