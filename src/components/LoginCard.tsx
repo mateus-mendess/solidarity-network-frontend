@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { login } from "@/services/authenticationService";
@@ -10,11 +10,13 @@ function LoginCard() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate(); 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    localStorage.removeItem("token");
     try {
-      const data = await login(email, password);
-      console.log("Login bem-sucedido: ", data)
+      await login(email, password);
+      navigate("/volunteer/profile");
     } catch {
       alert("Falha no login!")
     }

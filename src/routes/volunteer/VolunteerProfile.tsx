@@ -1,33 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
+import { getVolunteerProfile } from "@/services/volunteerService";
+import {  type VolunteerResponse } from "@/types/volunteerResponse";
 
 export default function VolunteerProfile() {
   const [tab, setTab] = useState("edit");
+  const [volunteer, setVolunteer] = useState<VolunteerResponse | null>(null);
+
+  useEffect(() => {
+    async function fetchProfile() {
+      try {
+        const data = await getVolunteerProfile();
+        setVolunteer(data);
+      } catch (err) {
+        console.error("Erro ao buscar perfil do voluntário:", err);
+      }
+    }
+
+    fetchProfile();
+  }, []);
+
+  if (!volunteer) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-lg text-gray-600">Carregando perfil...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center items-start gap-16 mt-10">
-      {/* Lado esquerdo - Perfil */}
+
       <div className="flex flex-col items-center border-2 rounded-2xl p-8 shadow-md w-[320px] h-[500px]">
         <img
-          src="https://via.placeholder.com/150"
-          alt="Foto de perfil"
-          className="w-36 h-36 rounded-xl mb-4"
+          src={volunteer.profilePhoto}
+          alt={`${volunteer.name} ${volunteer.lastName}`}
+          className="w-36 h-36 rounded-xl mb-4 object-cover"
         />
+
         <h2 className="text-xl font-semibold text-center">
-          Luiz Gustavo Nascimento
+          {volunteer.name} {volunteer.lastName}
         </h2>
 
         <div className="mt-4 text-left">
           <p className="font-medium mb-1">Ações preferidas</p>
           <ul className="space-y-1">
             <li className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-blue-500"></span> Educação
+              <span className="w-3 h-3 rounded-full bg-blue-500"></span>{" "}
+              Educação
             </li>
             <li className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-red-500"></span> Saúde
             </li>
             <li className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-green-500"></span> Assistência
+              <span className="w-3 h-3 rounded-full bg-green-500"></span>{" "}
+              Assistência
             </li>
           </ul>
         </div>
@@ -37,9 +64,7 @@ export default function VolunteerProfile() {
         </div>
       </div>
 
-      {/* Lado direito - Abas e formulário */}
       <div className="flex flex-col gap-4 w-[500px]">
-        {/* Abas */}
         <div className="flex justify-between text-base font-medium">
           <button onClick={() => setTab("actions")}>Ações sociais</button>
           <button onClick={() => setTab("stories")}>Minhas histórias</button>
