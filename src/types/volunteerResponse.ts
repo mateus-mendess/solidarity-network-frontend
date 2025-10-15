@@ -3,4 +3,8 @@ export interface VolunteerResponse {
   name: string;
   lastName: string;
   profilePhoto: string;
+  phone: string;
+  work: string;
+  gender: string;
+  birthday: string;
 }

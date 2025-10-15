@@ -7,7 +7,15 @@ const api = axios.create({
 api.interceptors.request.use(async config => {
   const token = localStorage.getItem("token");
 
-  if (token) {
+    const publicEndpoints = [
+      "/auth/login",
+      "/volunteer/register",
+      "/organization/register",
+    ];
+
+    const isPublic = publicEndpoints.some((url) => config.url?.includes(url));
+
+  if (!isPublic && token) {
     config.headers.authorization = `Bearer ${token}`;
   }
 
